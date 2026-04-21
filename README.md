@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Social Share Bill Generator 🧾✨
 
-## Getting Started
+A professional, zero-database utility for generating and sharing beautiful, high-quality receipt and invoice images. Designed for speed, privacy, and ease of use.
 
-First, run the development server:
+## 🚀 Key Features
+
+- **Zero-Database Architecture**: Your data is yours. Information is stored strictly in your browser and shared via compressed URL state.
+- **Dynamic Theming**: Choose from multiple aesthetic personas including Minimalist, Bold, Receipt, and Elegant styles.
+- **Intelligent Image Handling**: Upload your brand logo and have it automatically resized client-side for optimal performance.
+- **High-Quality Exports**: Generate pixel-perfect PNG images of your bills ready for social sharing or instant messaging.
+- **Portability**: Share your entire bill configuration with a single compressed URL—no account required.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js (App Router)](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **State Management**: React Hooks & Context API
+- **Utilities**: 
+  - `lz-string`: Robust URL state compression
+  - `html-to-image`: High-fidelity DOM to PNG serialization
+  - HTML5 Canvas API: Client-side image minification
+
+## 🏃 Getting Started
+
+### Local Development
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Run the Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Open in Browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Building for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔒 Privacy & Data
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This application is built with a **Privacy-First** approach. 
+- No cookies are used for tracking.
+- No data is sent to a server-side database.
+- Line items and pricing are encoded into the URL hash using LZ-string compression.
+- Settings like shop name and logo are stored locally in your browser's `localStorage`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built for professionals who need a fast way to generate beautiful invoices on the fly.
