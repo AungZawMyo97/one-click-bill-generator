@@ -16,7 +16,6 @@ export function ShareButtons({ billRef }: ShareButtonsProps) {
     if (!billRef.current) return null;
     setIsExporting(true);
     try {
-      // Scale up for better quality on retina devices
       const dataUrl = await toPng(billRef.current, { 
         cacheBust: true, 
         pixelRatio: 2

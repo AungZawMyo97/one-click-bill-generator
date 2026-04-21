@@ -29,11 +29,8 @@ export async function resizeImageToDataUrl(file: File, maxWidth = 300, maxHeight
           return;
         }
 
-        // Maintain transparency where possible
         ctx.clearRect(0, 0, width, height);
         ctx.drawImage(img, 0, 0, width, height);
-        // Use image/webp for much better compression in localStorage
-        // Fallback to image/jpeg if webp isn't supported (though it is in almost all modern browsers)
         resolve(canvas.toDataURL('image/webp', 0.8));
       };
       img.onerror = () => reject(new Error('Failed to load image'));

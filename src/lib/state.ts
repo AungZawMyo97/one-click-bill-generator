@@ -25,7 +25,6 @@ export const defaultBillData: BillData = {
 
 export function encodeBillData(data: BillData): string {
   const jsonString = JSON.stringify(data);
-  // Using compressToEncodedURIComponent as it is URL safe right out of the box
   return LZString.compressToEncodedURIComponent(jsonString);
 }
 

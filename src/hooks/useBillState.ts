@@ -7,7 +7,6 @@ export function useBillState() {
   const [billData, setBillData] = useState<BillData>(defaultBillData);
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // On mount, read from URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const encoded = params.get("b");
@@ -22,7 +21,6 @@ export function useBillState() {
     }, 0);
   }, []);
 
-  // Sync to URL when billData changes with a small debounce to prevent browser lag
   useEffect(() => {
     if (!isHydrated) return;
     

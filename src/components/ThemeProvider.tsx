@@ -19,7 +19,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState("theme-minimalist");
   const [mounted, setMounted] = useState(false);
 
-  // Load from localStorage on mount
   useEffect(() => {
     try {
       const savedShop = localStorage.getItem("billSettings_shopName");
@@ -39,7 +38,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }, 0);
   }, []);
 
-  // Save to localStorage when things change
   useEffect(() => {
     if (!mounted) return;
     try {
@@ -55,9 +53,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [shopName, logoBase64, theme, mounted]);
 
-  // Prevent hydration errors by not rendering until mounted
   if (!mounted) {
-    return <div className="min-h-screen" />; // Optional: simple placeholder
+    return <div className="min-h-screen" />;
   }
 
   return (

@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { forwardRef } from "react";
+import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
 import { BillData } from "@/lib/state";
 
@@ -42,10 +42,11 @@ export const BillPreview = forwardRef<HTMLDivElement, BillPreviewProps>(
         ref={ref}
         style={inlineStyles}
       >
-        {/* Logo and Shop Name Header */}
         <div className="flex flex-col items-center mb-8 text-center space-y-4">
           {logoBase64 && (
-            <img src={logoBase64} alt="Shop Logo" className="w-20 h-20 object-contain" />
+            <div className="relative w-20 h-20">
+              <Image src={logoBase64} alt="Shop Logo" fill className="object-contain" unoptimized />
+            </div>
           )}
           <h1 className="text-3xl font-bold text-bill-primary font-bill tracking-tight">
             {shopName || "Unnamed Shop"}
@@ -53,7 +54,6 @@ export const BillPreview = forwardRef<HTMLDivElement, BillPreviewProps>(
           <div className="w-16 h-1 bg-bill-accent mt-2 rounded"></div>
         </div>
 
-        {/* Bill Items List */}
         <div className="mb-8">
           <div className="flex justify-between text-xs font-bold text-bill-primary border-b border-bill-border pb-3 mb-4 font-bill uppercase tracking-widest">
             <span>Item</span>
@@ -76,7 +76,6 @@ export const BillPreview = forwardRef<HTMLDivElement, BillPreviewProps>(
           </div>
         </div>
 
-        {/* Totals Section */}
         <div className="border-t border-bill-border pt-5 space-y-3 text-sm font-bill">
           <div className="flex justify-between text-bill-primary">
             <span>Subtotal</span>
@@ -100,7 +99,6 @@ export const BillPreview = forwardRef<HTMLDivElement, BillPreviewProps>(
           </div>
         </div>
 
-        {/* Footer */}
         <div className="mt-12 text-center text-xs text-bill-primary font-bill opacity-60">
           <p>Thank you for your business!</p>
           <div className="flex justify-center mt-3 mb-1">

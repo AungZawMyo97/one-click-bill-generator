@@ -56,7 +56,6 @@ export function ControlsPanel({ billData, updateBillData }: ControlsPanelProps) 
 
   return (
     <div className="bg-white rounded-3xl p-6 md:p-8 h-full flex flex-col space-y-8 animate-fade-in text-gray-900 shadow-sm border border-gray-200">
-      {/* Configuration Section */}
       <section className="space-y-5">
         <h2 className="text-lg font-bold flex items-center space-x-2 text-gray-900">
           <Settings2 className="w-5 h-5 text-gray-700" />
@@ -126,7 +125,6 @@ export function ControlsPanel({ billData, updateBillData }: ControlsPanelProps) 
 
       <hr className="border-gray-100" />
 
-      {/* Bill Items Section */}
       <section className="space-y-5 flex-1">
         <h2 className="text-lg font-bold flex items-center space-x-2 text-gray-900">
           <AlertCircle className="w-5 h-5 text-gray-700" />
@@ -183,7 +181,6 @@ export function ControlsPanel({ billData, updateBillData }: ControlsPanelProps) 
         </button>
       </section>
 
-      {/* Taxes & Currency */}
       <section className="grid grid-cols-3 gap-4">
         <div className="space-y-2">
           <label className="text-xs text-gray-500 font-bold uppercase tracking-wider">Currency</label>
