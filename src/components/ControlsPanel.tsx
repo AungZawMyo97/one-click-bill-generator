@@ -133,41 +133,43 @@ export function ControlsPanel({ billData, updateBillData }: ControlsPanelProps) 
         
         <div className="space-y-3">
           {billData.items.map((item, index) => (
-            <div key={item.id} className="grid grid-cols-[1fr_auto_auto_auto] gap-3 items-center bg-gray-50 hover:bg-gray-100 p-3 rounded-2xl border border-gray-200 group transition-colors">
+            <div key={item.id} className="flex flex-col sm:flex-row gap-3 sm:items-center bg-gray-50 hover:bg-gray-100 p-3 rounded-2xl border border-gray-200 group transition-colors">
               <input
                 type="text"
                 placeholder={`Item ${index + 1}`}
                 value={item.name}
                 onChange={(e) => updateItem(item.id, { name: e.target.value })}
-                className="bg-transparent text-sm focus:outline-none w-full min-w-0 font-medium placeholder:text-gray-400 px-2 text-gray-900"
+                className="bg-transparent text-sm focus:outline-none w-full min-w-0 font-medium placeholder:text-gray-400 px-2 text-gray-900 flex-1"
               />
-              <div className="flex items-center space-x-2 bg-white border border-gray-200 shadow-sm rounded-lg px-2 py-1">
-                <span className="text-xs text-gray-500 font-medium">Qty</span>
-                <input
-                  type="number"
-                  min="1"
-                  value={item.quantity === 0 ? '' : item.quantity}
-                  onChange={(e) => updateItem(item.id, { quantity: parseInt(e.target.value) || 0 })}
-                  className="bg-transparent text-sm focus:outline-none w-8 text-center font-medium text-gray-900"
-                />
+              <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto space-x-2 sm:space-x-3">
+                <div className="flex items-center space-x-2 bg-white border border-gray-200 shadow-sm rounded-lg px-2 py-1">
+                  <span className="text-xs text-gray-500 font-medium">Qty</span>
+                  <input
+                    type="number"
+                    min="1"
+                    value={item.quantity === 0 ? '' : item.quantity}
+                    onChange={(e) => updateItem(item.id, { quantity: parseInt(e.target.value) || 0 })}
+                    className="bg-transparent text-sm focus:outline-none w-8 text-center font-medium text-gray-900"
+                  />
+                </div>
+                <div className="flex flex-1 sm:flex-none items-center space-x-1 bg-white border border-gray-200 shadow-sm rounded-lg pl-3 pr-2 py-1">
+                  <span className="text-gray-400 text-xs font-bold">{billData.currency}</span>
+                  <input
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value={item.price === 0 ? '' : item.price}
+                    onChange={(e) => updateItem(item.id, { price: parseFloat(e.target.value) || 0 })}
+                    className="bg-transparent text-sm focus:outline-none w-full sm:w-16 text-right font-medium text-gray-900"
+                  />
+                </div>
+                <button
+                  onClick={() => removeItem(item.id)}
+                  className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all md:opacity-0 group-hover:opacity-100 focus:opacity-100 shrink-0"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
               </div>
-              <div className="flex items-center space-x-1 bg-white border border-gray-200 shadow-sm rounded-lg pl-3 pr-2 py-1">
-                <span className="text-gray-400 text-xs font-bold">{billData.currency}</span>
-                <input
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  value={item.price === 0 ? '' : item.price}
-                  onChange={(e) => updateItem(item.id, { price: parseFloat(e.target.value) || 0 })}
-                  className="bg-transparent text-sm focus:outline-none w-16 text-right font-medium text-gray-900"
-                />
-              </div>
-              <button
-                onClick={() => removeItem(item.id)}
-                className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all md:opacity-0 group-hover:opacity-100 focus:opacity-100"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
             </div>
           ))}
         </div>
